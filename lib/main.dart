@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:event_top/widgets.dart';
+import 'package:event_top/login_page.dart';
+import 'package:event_top/principal_page.dart';
+import 'package:event_top/navigation_main_bar.dart';
+import 'package:event_top/events_ink.dart';
 
 void main() => runApp(new MyApp());
-
-final event_top = Center(
-  child:Text('EventTop',
-        textDirection: TextDirection.ltr,
-        style: TextStyle(color: Colors.blue[500],
-        fontSize: 80.0,))
-);
 
 class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      decoration: new BoxDecoration(color: Colors.white),
-      child: event_top,
-    );
+      return MaterialApp(
+        home: NavigationBar(),
+      );
   }
-
 }
