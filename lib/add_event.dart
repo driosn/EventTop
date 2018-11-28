@@ -10,6 +10,11 @@ class _AddPageState extends State<AddPage> {
   List<DropdownMenuItem<int>> listDrop = [];
 
   int selected = null;
+
+  int get_selected(){
+    return selected;
+  }
+
   loadData() {
     //listDrop = drop.map((val) => new DropdownMenuItem<String>(
     // child: new Text(val), value: val)).toList();
@@ -135,37 +140,36 @@ class _AddPageState extends State<AddPage> {
                     ],
                   ),
                 ),
-                new SubmitButton(),
+                new Container(
+                  padding: EdgeInsets.only(top: 16.0),
+                  height: 50.0,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(20.0),
+                    shadowColor: Colors.blueAccent,
+                    color: Colors.blue[800],
+                    elevation: 7.0,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Center(
+                        child: Text(
+                            'Submit',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'SpicyRice',)
+                        ),
+                      ),
+                      onTap: (){
+                        String tit = title_controller.text;
+                        String h = hour_controller.text;
+                        String org = org_controller.text;
+                        print('Technology: $selected   Title: $tit   Hour: $h   Organization: $org' );
+                      },
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
         ));
-  }
-}
-
-class SubmitButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: 16.0),
-      height: 50.0,
-      child: Material(
-        borderRadius: BorderRadius.circular(20.0),
-        shadowColor: Colors.blueAccent,
-        color: Colors.blue[800],
-        elevation: 7.0,
-        child: InkWell(
-            borderRadius: BorderRadius.circular(20.0),
-            child: Center(
-              child: Text(
-                  'Submit',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'SpicyRice',)
-              ),
-            ),
-        ),
-      ),
-    );
   }
 }

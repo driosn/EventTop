@@ -71,7 +71,7 @@ class recomendations_element extends StatelessWidget {
                 children: <Widget>[
                   Text('React Native'),
                   Text('Introduction to React'),
-                  Text('David Rios')
+                  Text('Una persona')
                 ],
               ),
             ),
