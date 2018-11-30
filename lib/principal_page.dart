@@ -2,14 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:event_top/widgets.dart';
 import 'package:event_top/events_ink.dart';
 
+List<Widget> events = [];
+bool adder = false;
+
+List<String> dir = ["images/react.png", "images/flutter.png", "images/tensorflow.png", "images/artificial.png"];
+List<String> tech = ["Web", "Mobile", "Web", "Artificial Inteligence"];
+List<String> desc = ["Introduction to React", "Introduction to Flutter", "Introduction to Tensorflow", "Introduction to AI"];
+List<String> hour = ["11:00 AM", "12:00 AM", "9:00 AM", "12:00 AM"];
+List<String> org = ["Oli", "Oli2", "Oli3", "Oli"];
+
+addEvent(String i, String t, String d, String h, String o){
+  dir.add(i);
+  tech.add(t);
+  desc.add(d);
+  hour.add(h);
+  org.add(o);
+}
+
 class PrincipalPage extends StatefulWidget {
   @override
   _PrincipalPageState createState() => _PrincipalPageState();
 }
 
 class _PrincipalPageState extends State<PrincipalPage> {
+  loadElements(){
+    for(var i=0; i<dir.length; i++){
+      events.add(EventElement(dir[i], tech[i], desc[i], hour[i], org[i]));
+    }
+  }
   @override
   Widget build(BuildContext context) {
+    events = [];
+    loadElements();
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(30.0),
@@ -29,9 +53,8 @@ class _PrincipalPageState extends State<PrincipalPage> {
                 child: modificable_words(
                     'Event Recomendations', 25.0, Colors.black)),
             new Expanded(
-                child: new ListView.builder(
-                    itemBuilder: (_,int index) =>EventElement(),
-                    itemCount: 20,
+                child: ListView(
+                  children: events,
                 ),
             ),
           ],
@@ -41,44 +64,4 @@ class _PrincipalPageState extends State<PrincipalPage> {
   }
 }
 
-class recomendations_element extends StatelessWidget {
-  @override
 
-  /*var _logo;
-  String _tech, _desc, _hour;
-
-  recomendations_element(Image i, String t, String d, String h){
-    _logo = i;
-    _tech = t;
-    _desc = d;
-    _hour = h;
-  }*/
-
-  Widget build(BuildContext context) {
-    return InkWell(
-      child: Container(
-        height: 50.0,
-        padding: EdgeInsets.all(5.0),
-        child: Row(
-          children: <Widget>[
-            Image(
-              image: new AssetImage('images/react.png'),
-              width: 50.0,
-              height: 50.0,
-            ),
-            new Expanded(
-              child: Column(
-                children: <Widget>[
-                  Text('React Native'),
-                  Text('Introduction to React'),
-                  Text('Una persona')
-                ],
-              ),
-            ),
-            Text('11.Am')
-          ],
-        ),
-      ),
-    );
-  }
-}

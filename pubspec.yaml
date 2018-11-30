@@ -41,6 +41,8 @@ flutter:
     - images/flutter.png
     - images/react.png
     - images/tensorflow.png
+    - images/web.png
+    - images/mobile.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
