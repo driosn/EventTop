@@ -3,16 +3,18 @@ import 'package:event_top/widgets.dart';
 import 'package:event_top/main.dart';
 import 'package:event_top/add_event.dart';
 
+Map<String, bool> values = {'Web':true,'Mobile':true,'Artificial Inteligence':true};
+
 class My_Account extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       home: Container(
-        padding: EdgeInsets.symmetric(vertical: 100.0, horizontal: 50.0),
+        padding: EdgeInsets.symmetric(vertical: 80.0, horizontal: 50.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            new image_container(),
+            new image_container('images/cosme.jpg'),
             new modificable_words('Cosme Fulanito', 30.0, Colors.black),
             new InkWell(
               child: new Text('Change Account',style: TextStyle(color: Colors.blue, fontSize: 10.0),),
@@ -41,7 +43,6 @@ class checkBox extends StatefulWidget {
 }
 
 class _checkBoxState extends State<checkBox> {
-  Map<String, bool> values = {'Web':false,'Mobile':false,'Artificial Inteligence':false};
   @override
   Widget build(BuildContext context) {
     return new ListView(
@@ -55,7 +56,6 @@ class _checkBoxState extends State<checkBox> {
               print(values['Web']);
               print(values['Mobile']);
               print(values['Artificial Inteligence']);
-
             });
           },
         );
@@ -66,14 +66,21 @@ class _checkBoxState extends State<checkBox> {
 
 
 class image_container extends StatelessWidget {
+
+  String _image;
+
+  image_container(String i){
+    _image = i;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 100.0,
       height: 100.0,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100.0),
-        color: Colors.black,
+        shape: BoxShape.circle,
+        image: new DecorationImage(image: new AssetImage(_image))
       ),
     );
   }

@@ -2,6 +2,30 @@ import 'package:event_top/events_ink.dart';
 import 'package:flutter/material.dart';
 import 'principal_page.dart';
 
+loadWeb(){
+  for(var i=0; i<tech.length; i++){
+    if(tech[i].compareTo("Web") == 0){
+      events.add(EventElement(dir[i], tech[i], desc[i], hour[i], org[i], descriptions[i]));
+    }
+  }
+}
+
+loadMobile(){
+  for(var i=0; i<tech.length; i++){
+    if(tech[i].compareTo("Mobile") == 0){
+      events.add(EventElement(dir[i], tech[i], desc[i], hour[i], org[i], descriptions[i]));
+    }
+  }
+}
+
+loadAI(){
+  for(var i=0; i<tech.length; i++){
+    if(tech[i].compareTo("Artificial Inteligence") == 0){
+      events.add(EventElement(dir[i], tech[i], desc[i], hour[i], org[i], descriptions[i]));
+    }
+  }
+}
+
 class All_Events extends StatefulWidget {
   @override
   _All_EventsState createState() => _All_EventsState();
@@ -26,35 +50,17 @@ class _All_EventsState extends State<All_Events> {
       child: new Text('Artificial Inteligence'),
       value: 3,
     ));
+    listDrop.add(new DropdownMenuItem(
+      child: new Text('All Events'),
+      value: 4,
+    ));
   }
 
-  loadWeb(){
-    for(var i=0; i<tech.length; i++){
-      if(tech[i].compareTo("Web") == 0){
-        events.add(EventElement(dir[i], tech[i], desc[i], hour[i], org[i]));
-      }
-    }
-  }
 
-  loadMobile(){
-    for(var i=0; i<tech.length; i++){
-      if(tech[i].compareTo("Mobile") == 0){
-        events.add(EventElement(dir[i], tech[i], desc[i], hour[i], org[i]));
-      }
-    }
-  }
-
-  loadAI(){
-    for(var i=0; i<tech.length; i++){
-      if(tech[i].compareTo("Artificial Inteligence") == 0){
-        events.add(EventElement(dir[i], tech[i], desc[i], hour[i], org[i]));
-      }
-    }
-  }
 
   loadDefault(){
     for (var i = 0; i < dir.length; i++) {
-      events.add(EventElement(dir[i], tech[i], desc[i], hour[i], org[i]));
+      events.add(EventElement(dir[i], tech[i], desc[i], hour[i], org[i], descriptions[i]));
     }
   }
 
@@ -76,6 +82,9 @@ class _All_EventsState extends State<All_Events> {
         break;
       case 3:
         loadAI();
+        break;
+      case 4:
+        loadDefault();
         break;
       default:
         loadDefault();
@@ -110,11 +119,7 @@ class _All_EventsState extends State<All_Events> {
                               selected = value;
                             });
                           }),
-                      new Expanded(
-                          child: new TextField(
-                        controller: _controller,
-                      ))
-                    ],
+                      ],
                   ),
                 ),
                 new Expanded(

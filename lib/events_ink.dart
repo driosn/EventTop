@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:event_top/principal_page.dart';
+import 'package:event_top/event_description.dart';
 
 class EventElement extends StatelessWidget {
 
-  String _image,_tech, _desc, _hour, _org;
+  EvDesc _event;
 
-  EventElement(String i, String t, String d, String h, String o){
+  String _image,_tech, _desc, _hour, _org, _description;
+
+  EventElement(String i, String t, String d, String h, String o, String desc){
     _image = i;
     _tech = t;
     _desc = d;
     _hour = h;
     _org = o;
+    _description = desc;
   }
 
   @override
@@ -45,7 +49,10 @@ class EventElement extends StatelessWidget {
       ),
       onTap: (){
         print('Hola Mundo');
-        addEvent("images/react.png","Web", "Introduction to React", "11:00 AM", "Oli");
+        _event = new EvDesc(_desc, _image, _description, _hour, _org);
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context)=> _event
+        ));
       },
     );
   }
